@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-between">
+            <h3 class="m-0">Todo List</h3>
+            <a routerLink="/todos/add" class="btn btn-primary">Add a Todo</a>
+        </div>
+        <div class="col-md-12 mt-5">            
+            <div *ngIf="todos.length===0; else elseBlock">No Todos to display.</div>
+            <ng-template #elseBlock>
+                <div *ngFor="let todo of todos" class="shadow-lg p-3 mb-5 bg-white rounded">
+                    <app-todo-item [todo]="todo" (todoDelete)="deleteTodo($event)"></app-todo-item>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>
